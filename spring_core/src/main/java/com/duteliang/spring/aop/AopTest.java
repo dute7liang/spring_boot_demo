@@ -34,14 +34,15 @@ public class AopTest {
 		System.out.println("before 前置事件！");
 	}
 
+	// 不管是抛出异常或者正常退出都会执行
 	@After("doService()")
 	public void after(JoinPoint jp){
 		System.out.println("after 后置事件！");
 	}
 
+	// 方法退出时执行
 	@AfterReturning(returning = "obj", pointcut = "doService()")
 	public void afterReturning(Object obj) throws Throwable {
-		// 处理完请求，返回内容
 		System.out.println("方法的返回值 : " + obj);
 	}
 
@@ -49,8 +50,8 @@ public class AopTest {
 	 * 有异常的时候进入
 	 * @param jp
 	 */
-	@AfterThrowing("doService()")
-	public void afterThrowing(JoinPoint jp){
+	@AfterThrowing(throwing = "ex", pointcut = "doService()")
+	public void afterThrowing(JoinPoint jp,Exception ex){
 		System.out.println("方法异常时执行.....");
 	}
 

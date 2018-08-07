@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class AopOneService {
 
 
-	public String add(String str){
+	public String add(String str) throws Exception{
 		System.out.println(this.getClass()+".add() 方法被执行！");
 		return "this is test";
 	}
