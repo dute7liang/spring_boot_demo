@@ -1,5 +1,7 @@
 package com.duteliang.spring;
 
+import com.duteliang.spring.aop.AopOneService;
+import com.duteliang.spring.aop.AopTwoService;
 import com.duteliang.spring.ioc.BeanService;
 import com.duteliang.spring.ioc.ComponentBean;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,12 @@ public class SpringCoreApplicationTest {
 	@Autowired
 	private ComponentBean componentBean;
 
+	@Autowired
+	private AopOneService aopOneService;
+
+	@Autowired
+	private AopTwoService aopTwoService;
+
 	@Test
 	public void beanTest(){
 		beanService.printer();
@@ -33,6 +41,13 @@ public class SpringCoreApplicationTest {
 	@Test
 	public void componentBeanTest(){
 		componentBean.printer();
+	}
+
+	@Test
+	public void aopTest(){
+		String add = aopOneService.add("");
+		System.out.println(add);
+//		aopOneService.delete();
 	}
 
 }
