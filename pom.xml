@@ -12,6 +12,7 @@
     <description>parent for Spring Boot</description>
     <modules>
         <module>properties</module>
+        <module>spring_core</module>
     </modules>
 
     <parent>
