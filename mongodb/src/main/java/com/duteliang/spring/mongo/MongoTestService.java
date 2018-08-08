@@ -1,5 +1,6 @@
 package com.duteliang.spring.mongo;
 
+import com.duteliang.spring.model.MongoPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,20 @@ public class MongoTestService {
 	private MongoTemplate mongoTemplate;
 
 
+	public void add(MongoPo mongoPo){
+		mongoTemplate.save(mongoPo);
+	}
 
+	public void update(MongoPo mongoPo){
+
+	}
+
+
+	public void delete(String id){
+
+	}
+
+	public void queryAll(String document){
+	}
 
 }
