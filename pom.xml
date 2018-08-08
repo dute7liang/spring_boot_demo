@@ -13,6 +13,7 @@
     <modules>
         <module>properties</module>
         <module>spring_core</module>
+        <module>mongodb</module>
     </modules>
 
     <parent>

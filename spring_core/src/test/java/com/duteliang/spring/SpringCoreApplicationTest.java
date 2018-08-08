@@ -45,8 +45,13 @@ public class SpringCoreApplicationTest {
 
 	@Test
 	public void aopTest(){
-		String add = aopOneService.add("");
-		System.out.println(add);
+		String add = null;
+		try {
+			add = aopOneService.add("");
+			System.out.println(add);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 //		aopOneService.delete();
 	}
 
