@@ -26,5 +26,7 @@ public class MongoPo {
 
 	private Double grade;
 
+	private String code;
+
 
 }
