@@ -15,6 +15,7 @@
         <module>spring_core</module>
         <module>mongodb</module>
         <module>mvc</module>
+        <module>huhu</module>
     </modules>
 
     <parent>

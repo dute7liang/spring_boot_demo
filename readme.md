@@ -13,3 +13,6 @@ springBoot 1.5.15 <br/>
    +  使用springMvc <br/>
    +  使用注解方式的事物管理 <br/>
    +  使用swagger来测试和查看接口 <br/>
+   +  嵌入webSocket <br/>
+   +  使用thymeleaf视图解析器
+   +  拦截器和过滤器的使用

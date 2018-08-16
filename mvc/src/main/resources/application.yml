@@ -1,0 +1,16 @@
+server:
+  port: 8090
+  context-path: /duteliang
+  session-timeout: 1800
+logging:
+  path: ./logs/spring_demo
+  file: ./logs/spring_demo/demo.log
+spring:
+  datasource :
+    driverClassName : com.mysql.jdbc.Driver
+    url : jdbc:mysql://localhost/test
+    userName : root
+    password : root
+  thymeleaf :
+    cache: false
+    prefix: classpath:/page/
