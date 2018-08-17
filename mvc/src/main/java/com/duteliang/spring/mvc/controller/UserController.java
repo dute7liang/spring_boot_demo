@@ -7,9 +7,7 @@ import com.duteliang.spring.mvc.vo.Json;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,8 @@ public class UserController extends BaseController {
 	private IUserService userService;
 
 	/**
+	 *
+	 *
 	 *
 	 */
 	@RequestMapping(value = "page", method = RequestMethod.GET)
@@ -100,6 +100,20 @@ public class UserController extends BaseController {
 	@ResponseBody
 	public TUser test(TUser user){
 		return user;
+	}
+
+
+	@PostMapping(value = "testParam1")
+	@ResponseBody
+	public String testParam1(@RequestParam(value = "name1") String name){
+
+		return name;
+	}
+
+	@PostMapping(value = "testParam2/{id}")
+	@ResponseBody
+	public String testParam2(@PathVariable(value = "id") String id){
+		return id;
 	}
 
 

@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <script th:src="@{'/js/test.js'}"></script>
+    <link th:href="@{'/css/test.css'}" rel="stylesheet" />
 </head>
 <body>
+    <p> hello world!! 应该是红色字体</p>
     hello world!!
+    <span th:text = "${name}"></span>
 </body>
+<script>
+    console.log(test.aa);
+</script>
 </html>

@@ -1,0 +1,18 @@
+1. 关于静态资源的路径问题, 在ResourceProperties中可以直接看到配置,默认的路径为：<br/>
+{ <br/>
+    "classpath:/META-INF/resources/", <br/>
+    "classpath:/resources/", <br/>
+    "classpath:/static/", <br/>
+    "classpath:/public/" <br/>
+}; <br/> 
+如果静态资源放在其他地方会找不到。 <br/>
+
+2. 过滤器的注解简单说明 <br/>
+filerName    String      指定过滤器的name属性 <br/>
+value        String[]    等价于urlPatterns <br/>
+urlPatterns  String[]    指定一组过滤器url匹配模式 <br/>
+servletNames String[]    指定过滤器应用于哪些servlet <br/>
+dispatcherTypes          指定过滤器的转发模式 <br/>
+initParams               指定过滤器的初始化参数 <br/>
+description              过滤器的描述 <br/>
+displayName              过滤器的显示名称 <br/>

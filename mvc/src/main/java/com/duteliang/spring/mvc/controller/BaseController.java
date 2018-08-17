@@ -1,21 +1,19 @@
 package com.duteliang.spring.mvc.controller;
 
 import com.duteliang.spring.mvc.conver.DateConvertEditor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
- * @Description:
+ * @Description: 公用controller
  * @Auther: zl
  * @Date: 2018-7-6 15:56
  */
-@Controller
-@RequestMapping("/baseController")
+@ControllerAdvice
 public class BaseController {
 
 	@InitBinder
@@ -25,5 +23,11 @@ public class BaseController {
 
 		binder.registerCustomEditor(Date.class, new DateConvertEditor());
 	}
+
+	// 可以设置全局异常处理
+	/*@ExceptionHandler(value = FileNotFoundException.class)
+	public String error(){
+		return "not found exception";
+	}*/
 
 }
