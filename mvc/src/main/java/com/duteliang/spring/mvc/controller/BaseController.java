@@ -20,7 +20,6 @@ public class BaseController {
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
 		/*CustomDateEditor customDateEditor = new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true);
 		binder.registerCustomEditor(Date.class, customDateEditor);*/
-
 		binder.registerCustomEditor(Date.class, new DateConvertEditor());
 	}
 

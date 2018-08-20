@@ -1,0 +1,2 @@
+webSocket的资料比较杂，没有时间去研究，网上版本也多。所以每个版本试一下
+first 主要采用h5的webSocket
