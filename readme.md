@@ -14,6 +14,8 @@ springBoot 1.5.15 <br/>
    +  使用注解方式的事物管理 
    +  使用swagger来测试和查看接口 
    +  使用thymeleaf视图解析器
+   +  下载，上传文件
    +  拦截器,过滤器,监听器，servlet的基本使用
    +  嵌入webSocket 
    +  嵌入activeMq 
+   +  基本的登陆系统
