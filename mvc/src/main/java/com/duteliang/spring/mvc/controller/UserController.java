@@ -106,7 +106,6 @@ public class UserController extends BaseController {
 	@PostMapping(value = "testParam1")
 	@ResponseBody
 	public String testParam1(@RequestParam(value = "name1") String name){
-
 		return name;
 	}
 
