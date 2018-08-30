@@ -31,7 +31,7 @@ public class UserService implements IUserService {
 	public TUser add(TUser user) throws Exception {
 		Assert.notNull(user, "user is must not null");
 		String id = UuidGeneratorUtil.generateId();
-		String sql = "INSERT user(id,name,age,birthday) value(?,?,?,?)";
+		String sql = "INSERT user(id,name,age,birthday,PASSWORD) value(?,?,?,?,?)";
 		jdbcTemplate.update(sql, id,user.getName(),user.getAge(),user.getBirthday());
 		user.setId(id);
 //		int i = 5/0;
@@ -42,7 +42,7 @@ public class UserService implements IUserService {
 	public void update(TUser user) throws Exception {
 		Assert.notNull(user, "user is must not null");
 		Assert.notNull(user.getId(), "user.id is must not null");
-		String sql = "UPDATE USER SET NAME = ? AND AGE = ? AND BIRTHDAY = ? WHERE ID = ?";
+		String sql = "UPDATE USER SET NAME = ? AND AGE = ? AND BIRTHDAY = ? AND PASSWORD = ? WHERE ID = ?";
 		jdbcTemplate.update(sql, user.getName(),user.getAge(),user.getBirthday(),user.getId());
 	}
 
@@ -82,5 +82,14 @@ public class UserService implements IUserService {
 		}
 		RowMapper<TUser> rowMapper = new BeanPropertyRowMapper<>(TUser.class);
 		return  jdbcTemplate.query(sql.toString(),rowMapper, params.toArray());
+	}
+
+	@Override
+	public TUser getUser(String password,String username) throws Exception {
+		Assert.notNull(password, "password is must not null");
+		Assert.notNull(username, "username is must not null");
+		String sql = "SELECT * FROM USER WHERE PASSWORD = ? AND NAME = ?";
+		RowMapper<TUser> rowMapper = new BeanPropertyRowMapper<>(TUser.class);
+		return jdbcTemplate.queryForObject(sql, rowMapper,password,username);
 	}
 }

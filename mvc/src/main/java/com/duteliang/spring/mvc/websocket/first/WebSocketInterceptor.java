@@ -22,14 +22,13 @@ public class WebSocketInterceptor implements HandshakeInterceptor {
 	@Override
 	public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response,
 								   WebSocketHandler webSocketHandler, Map<String, Object> map) throws Exception {
-		System.out.println("Hello world");
+		System.out.println("webSocket 消息的拦截");
 		if (request instanceof ServletServerHttpRequest) {
-			String ID = request.getURI().toString().split("ID=")[1];
-			System.out.println("当前session的ID="+ID);
 			ServletServerHttpRequest serverHttpRequest = (ServletServerHttpRequest) request;
 			HttpSession session = serverHttpRequest.getServletRequest().getSession();
-			map.put(Constants.SESSION_ID_KEY, session.getId());
-			map.put("WEBSOCKET_USERID",ID);
+			Object attribute = session.getAttribute(Constants.SESSION_USER_ID);
+			map.put(Constants.WEB_SOCKET_SESSION_ID_KEY, session.getId());
+			map.put(Constants.WEB_SOCKET_USERID,attribute);
 		}
 		return true;
 

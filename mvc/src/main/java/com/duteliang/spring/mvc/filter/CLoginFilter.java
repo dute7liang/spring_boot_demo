@@ -12,15 +12,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * @Description: 拦截页面
+ * @Description: 登陆拦截
  * @Auther: zl
  * @Date: 2018-8-29 11:26
  */
 @WebFilter(filterName = "loginFilter",
 		urlPatterns = "/*",
 		initParams = {
-			@WebInitParam(name = "exclusions-static", value = ".css,.js,.html"),
-			@WebInitParam(name = "exclusions-url", value = Constants.LOGIN_URL),
+			@WebInitParam(name = "exclusions-static", value = ".css,.js,.html,.png,ui"),
+			@WebInitParam(name = "exclusions-url", value = Constants.LOGIN_URL + ",/loginController/login"),
+			@WebInitParam(name = "exclusions-swagger", value = "swagger-resources,v2/api-docs")
 		})
 @Slf4j
 public class CLoginFilter  implements Filter {
@@ -29,12 +30,16 @@ public class CLoginFilter  implements Filter {
 
 	private String[] exclusionUrl;
 
+	private String[] exclusionSwagger;
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		String exclusionParam = filterConfig.getInitParameter("exclusions-static");
 		exclusionsStatic = exclusionParam.split(",");
 		exclusionParam = filterConfig.getInitParameter("exclusions-url");
 		exclusionUrl = exclusionParam.split(",");
+		exclusionParam = filterConfig.getInitParameter("exclusions-swagger");
+		exclusionSwagger = exclusionParam.split(",");
 	}
 
 	@Override
@@ -57,12 +62,20 @@ public class CLoginFilter  implements Filter {
 				return;
 			}
 		}
+		// swagger2 的资源接口放行
+		/*for (String swagger : exclusionSwagger) {
+			if(requestURL.toString().endsWith(swagger)){
+				chain.doFilter(request, response);
+				return;
+			}
+		}*/
 
 		Object attribute = session.getAttribute(Constants.SESSION_STATUS);
 		if(attribute != null && "1".equals(attribute.toString())){
 			chain.doFilter(request, response);
 		} else {
-			servletResponse.sendRedirect(Constants.LOGIN_URL);
+			String contextPath = session.getServletContext().getContextPath();
+			servletResponse.sendRedirect(contextPath + Constants.LOGIN_URL);
 		}
 	}
 

@@ -23,7 +23,7 @@ class WebSocketH5Config implements WebSocketConfigurer {
 
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(firstHandler,"/myHandler/{id}")
+		registry.addHandler(firstHandler,"/webSocket")
 				.setAllowedOrigins("*") // 添加允许跨域访问
 				.addInterceptors(webSocketInterceptor); // 配置拦截器
 	}

@@ -21,4 +21,6 @@ public interface IUserService {
 
 	List<TUser> queryList(TUser user) throws Exception;
 
+	TUser getUser(String password,String username) throws Exception;
+
 }

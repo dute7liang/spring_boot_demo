@@ -7,9 +7,19 @@ package com.duteliang.spring.mvc.constanst;
  */
 public class Constants {
 
+	// 当前session的状态
 	public final static String SESSION_STATUS = "SESSION_STATUS";
+	// 当前session对应的 用户id
+	public final static String SESSION_USER_ID = "SESSION_USER_ID";
+	// 登陆url
+	public final static String LOGIN_URL = "/loginController/loginPage";
 
-	public final static String LOGIN_URL = "/loginController/page";
 
-	public final static String SESSION_ID_KEY = "SESSION_ID_KEY";
+	// webSocket 存储sessionId
+	public final static String WEB_SOCKET_SESSION_ID_KEY = "WEB_SOCKET_SESSION_ID_KEY";
+
+	// webSocket 用户id
+	public final static String WEB_SOCKET_USERID  = "WEBSOCKET_USERID";
+
+
 }

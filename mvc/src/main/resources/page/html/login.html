@@ -19,8 +19,9 @@
     function login(){
         var userName = $("#userName").val();
         var password = $("#password").val();
+        console.log(contextPath);
         $.ajax({
-            url : contextPath + "/loginController/login",
+            url : contextPath + "loginController/login",
             type : "post",
             data : {
                 userName : userName,
@@ -28,7 +29,9 @@
             },
             success : function(data){
                 console.log(data);
-                window.location.href = contextPath + "/userController/page"
+                if(data.success){
+                    window.location.href = contextPath + "userController/page"
+                }
             }
         })
 
