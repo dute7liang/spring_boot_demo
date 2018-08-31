@@ -26,6 +26,7 @@ public class UserController extends BaseController {
 	@Autowired
 	private IUserService userService;
 
+
 	/**
 	 *
 	 *

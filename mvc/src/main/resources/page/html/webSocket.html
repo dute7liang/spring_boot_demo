@@ -7,17 +7,17 @@
 </head>
 <body>
 Welcome<br/>
-<span>发送给服务端的消息:</span>
-<textarea rows="3" cols="20" id = "text">
-
-</textarea>
-<br/>
-当前状态：<span id = "loginStatus">未登陆</span>
+当前状态：<span id = "loginStatus">未登陆</span><br/>
 <button onclick="connectWebSocket()">login</button>
 <button onclick="send()">Send</button>
-<button onclick="closeWebSocket()">Close</button>
-<div id="message">
+<button onclick="closeWebSocket()">Close</button><br/>
+<span>发送给服务端的消息:</span>
+<textarea rows="2" cols="40" id = "text"></textarea>
+<div>
+    <span>接收到的消息：</span>
+    <spane id="message" style="color: coral"></spane>
 </div>
+
 <script th:inline="javascript">
     var websocket=null;
     $(function() {
@@ -38,22 +38,26 @@ Welcome<br/>
     function connectWebSocket(){
         console.log("开始...");
         //建立webSocket连接
-        websocket = new WebSocket("ws://localhost:8090/duteliang/webSocket22");
+        websocket = new WebSocket("ws://localhost:8090/duteliang/webSocket");
         //打开webSokcet连接时，回调该函数
         websocket.onopen = function () {
-            console.log("onpen");
+            console.log("onpen 连接成功");
+            $("#loginStatus").html("登入成功！");
         }
         //关闭webSocket连接时，回调该函数
         websocket.onclose = function () {
             //关闭连接
-            console.log("onclose");
+            console.log("onclose 关闭连接");
+            $("#loginStatus").html("未登陆！");
         }
         //接收信息
         websocket.onmessage = function (msg) {
             $("#message").html(msg.data);
             console.log(msg.data);
         }
+        // 连接发生错误
         websocket.onerror = function(e){
+            $("#loginStatus").html("登入失败！");
             console.log(e);
         }
     }

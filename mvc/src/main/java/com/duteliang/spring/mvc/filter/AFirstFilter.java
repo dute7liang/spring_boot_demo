@@ -33,7 +33,6 @@ public class AFirstFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String requestURI = req.getRequestURI();
 		log.info("第一个过滤器拦截到的uri:"+requestURI);
-		System.out.println(exclusions);
 		// 执行以下代码 表示放行
 		chain.doFilter(request, response);
 	}

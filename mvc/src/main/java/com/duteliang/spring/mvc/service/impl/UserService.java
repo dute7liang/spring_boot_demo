@@ -30,11 +30,12 @@ public class UserService implements IUserService {
 	@Override
 	public TUser add(TUser user) throws Exception {
 		Assert.notNull(user, "user is must not null");
-		String id = UuidGeneratorUtil.generateId();
+		if(StringUtils.isEmpty(user.getId())){
+			String id = UuidGeneratorUtil.generateId();
+			user.setId(id);
+		}
 		String sql = "INSERT user(id,name,age,birthday,PASSWORD) value(?,?,?,?,?)";
-		jdbcTemplate.update(sql, id,user.getName(),user.getAge(),user.getBirthday());
-		user.setId(id);
-//		int i = 5/0;
+		jdbcTemplate.update(sql, user.getId(),user.getName(),user.getAge(),user.getBirthday(),user.getPassword());
 		return user;
 	}
 
@@ -43,7 +44,7 @@ public class UserService implements IUserService {
 		Assert.notNull(user, "user is must not null");
 		Assert.notNull(user.getId(), "user.id is must not null");
 		String sql = "UPDATE USER SET NAME = ? AND AGE = ? AND BIRTHDAY = ? AND PASSWORD = ? WHERE ID = ?";
-		jdbcTemplate.update(sql, user.getName(),user.getAge(),user.getBirthday(),user.getId());
+		jdbcTemplate.update(sql, user.getName(),user.getAge(),user.getBirthday(),user.getPassword(),user.getId());
 	}
 
 	@Override

@@ -20,8 +20,7 @@ import java.io.IOException;
 		urlPatterns = "/*",
 		initParams = {
 			@WebInitParam(name = "exclusions-static", value = ".css,.js,.html,.png,ui"),
-			@WebInitParam(name = "exclusions-url", value = Constants.LOGIN_URL + ",/loginController/login"),
-			@WebInitParam(name = "exclusions-swagger", value = "swagger-resources,v2/api-docs")
+			@WebInitParam(name = "exclusions-url", value = Constants.LOGIN_URL + ",/loginController/login")
 		})
 @Slf4j
 public class CLoginFilter  implements Filter {
@@ -30,16 +29,12 @@ public class CLoginFilter  implements Filter {
 
 	private String[] exclusionUrl;
 
-	private String[] exclusionSwagger;
-
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		String exclusionParam = filterConfig.getInitParameter("exclusions-static");
 		exclusionsStatic = exclusionParam.split(",");
 		exclusionParam = filterConfig.getInitParameter("exclusions-url");
 		exclusionUrl = exclusionParam.split(",");
-		exclusionParam = filterConfig.getInitParameter("exclusions-swagger");
-		exclusionSwagger = exclusionParam.split(",");
 	}
 
 	@Override
@@ -48,6 +43,7 @@ public class CLoginFilter  implements Filter {
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
 		HttpSession session = servletRequest.getSession();
 		StringBuffer requestURL = servletRequest.getRequestURL();
+//		String requestURI = servletRequest.getRequestURI();
 		// 静态资源放行
 		for (String staticString : exclusionsStatic) {
 			if(requestURL.toString().endsWith(staticString)){
@@ -62,14 +58,6 @@ public class CLoginFilter  implements Filter {
 				return;
 			}
 		}
-		// swagger2 的资源接口放行
-		/*for (String swagger : exclusionSwagger) {
-			if(requestURL.toString().endsWith(swagger)){
-				chain.doFilter(request, response);
-				return;
-			}
-		}*/
-
 		Object attribute = session.getAttribute(Constants.SESSION_STATUS);
 		if(attribute != null && "1".equals(attribute.toString())){
 			chain.doFilter(request, response);
