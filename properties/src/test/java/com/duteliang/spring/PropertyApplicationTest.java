@@ -39,7 +39,7 @@ public class PropertyApplicationTest {
 	private Environment env;
 
 	@Test
-	public void propertiesTest(){
+	public void defaultPropertiesTest(){
 		log.info(defaultProperties.toString());
 		log.info(env.getProperty("com.appName"));
 	}

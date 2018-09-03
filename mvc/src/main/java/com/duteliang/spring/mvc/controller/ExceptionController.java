@@ -13,7 +13,8 @@ import java.io.FileNotFoundException;
  * @Date: 2018-8-17 17:29
  */
 @Controller
-public class TestController extends BaseController {
+@RequestMapping(value = "exceptionController")
+public class ExceptionController extends BaseController {
 
 
 	@RequestMapping(value = "page", method = RequestMethod.GET)

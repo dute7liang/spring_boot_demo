@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>home</title>
     <script th:src="@{/js/test.js}"></script>
     <script th:src="@{/js/jquery/jquery.min.js}"></script>
     <link th:href="@{/css/test.css}" rel="stylesheet" />
@@ -18,7 +18,8 @@
     <br/>
     <br/>
     <a th:href="@{/swagger-ui.html}">进入接口测试页面</a> <br/>
-    <a th:href="@{/webSocketController/page}">进入webSocket测试页面</a>
+    <a th:href="@{/webSocketController/page}">进入webSocket测试页面</a> <br/>
+    <a th:href="@{/fileOperationController/page}">进入文件处理测试页面</a> <br/>
 </body>
 <script th:inline="javascript">
     var contextPath = /*[[@{/}]]*/'';
