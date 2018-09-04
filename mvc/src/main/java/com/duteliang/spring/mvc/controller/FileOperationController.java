@@ -138,8 +138,9 @@ public class FileOperationController extends BaseController {
 
 
 	@GetMapping("/download")
-	public void download(HttpServletRequest request, HttpServletResponse response, String fileName) throws IOException {
+	public void download(HttpServletRequest request, HttpServletResponse response, String fileName) throws Exception {
 		File file = map.get(fileName);
+		if(!file.exists()) throw new Exception("文件不存在");
 		// 清空response
 		response.reset();
 		// 设置response的Header

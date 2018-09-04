@@ -6,8 +6,11 @@
     <script th:src="@{/js/jquery/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.form.js}"></script>
     <style>
-        a {
-
+        #files a {
+            cursor:pointer;
+            text-decoration : underline;
+            color: blue;
+            display: block;
         }
 
     </style>
@@ -46,12 +49,15 @@
             success : function(data){
                 if(data){
                     $("#files").html("");
-                    var html = "";
                     /* <![CDATA[ */
                     for (var i = 0; i < data.length; i++) {
                         var fileName = data[i];
-                        html += "<a onclick='download()'>"+fileName+"</a>";
-                        $("#files").html(html);
+                        var a = document.createElement('a');
+                        a.innerHTML = fileName;
+                        a.addEventListener('click', function() {
+                            download(fileName);
+                        });
+                        $("#files").get(0).appendChild(a);
                     }
                     /* ]]> */
                 }else{
@@ -60,14 +66,15 @@
             }
         });
     }
-
-    function download(){
-
+    function download(fileName){
+        console.log(fileName);
+        var url = contextPath + "fileOperationController/download?fileName="+encodeURIComponent(fileName);
+        window.open(url);
     }
-
     function upload(){
         $("#upload").ajaxSubmit({
             success :function(json){
+                queryFiles();
                 alert(json.msg);
             }
         });
@@ -76,6 +83,7 @@
     function uploadMultiple(){
         $("#uploadMultiple").ajaxSubmit({
             success :function(json){
+                queryFiles();
                 alert(json.msg);
             }
         });
