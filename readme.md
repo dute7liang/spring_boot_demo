@@ -19,3 +19,6 @@ springBoot 1.5.15 <br/>
    +  嵌入webSocket 
    +  嵌入activeMq 
    +  基本的登陆系统
+5. redis       对redis的基本使用(未开发) <br/>
+6. hibernate   对hibernate的基本使用(未开发) <br/>
+7. mybatis     对mybatis的基本使用(未开发) <br/>
