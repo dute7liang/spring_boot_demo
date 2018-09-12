@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @ToString
 @Component
-@PropertySource({"classpath:config/source.properties"})
+@PropertySource("classpath:config/source.properties")
 public class SourceProperties {
 
 	@Value("${com.test.bool}")

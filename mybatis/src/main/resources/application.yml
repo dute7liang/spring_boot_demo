@@ -1,0 +1,45 @@
+server:
+  port: 8090
+  context-path: /duteliang
+  session:
+    timeout: 1800
+logging:
+  path: ./logs/spring_demo
+  file: ./logs/spring_demo/demo.log
+#  config: classpath:logback.xml
+spring :
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      timeBetweenEvictionRunsMillis: 60000
+      maxWait: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,log4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      urlMapping: /druid/*
+      allow: 127.0.0.1,10.0.0.5,10.0.0.25
+      deny: 127.0.0.1
+      loginUsername: admin
+      loginPassword: 123456
+      exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      resetEnable: false
+#      http:
+#        encoding:
+#          force: true
+#          charset: UTF-8
+mybatis:
+  mapper-locations: classpath:/com.duteliang.spring.mybatis.mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true   #自动将下划线转成驼峰规则

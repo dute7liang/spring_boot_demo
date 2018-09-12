@@ -1,6 +1,7 @@
 package com.duteliang.spring;
 
 import com.duteliang.spring.property.AutoProperties;
+import com.duteliang.spring.property.DefaultAutoProperties;
 import com.duteliang.spring.property.DefaultProperties;
 import com.duteliang.spring.property.SourceProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,14 @@ public class PropertyApplicationTest {
 
 	@Autowired
 	private Environment env;
+
+	@Autowired
+	private DefaultAutoProperties defaultAutoProperties;
+
+	@Test
+	public void defaultAutoPropertiesTest(){
+		log.info(defaultAutoProperties.toString());
+	}
 
 	@Test
 	public void defaultPropertiesTest(){

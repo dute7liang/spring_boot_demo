@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * @Description: 第一个拦截器
- *  测试发现，拦截器的加载顺序也是 类名来排序的
+ * @Description: 第一个过滤器
+ *  测试发现，过滤器的加载顺序也是 类名来排序的
  * @Auther: zl
  * @Date: 2018-8-17 11:30
  */
