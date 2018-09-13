@@ -20,5 +20,10 @@ public class MybatisApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext run = SpringApplication.run(MybatisApplication.class, args);
 		log.info("com.duteliang.spring.mybatis.mapper demo is start.");
+		log.fatal("fatal");
+		log.error("error");
+		log.warn("warn");
+		log.info("info");
+		log.debug("debug");
 	}
 }

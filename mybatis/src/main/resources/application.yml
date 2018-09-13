@@ -3,9 +3,9 @@ server:
   context-path: /duteliang
   session:
     timeout: 1800
-logging:
-  path: ./logs/spring_demo
-  file: ./logs/spring_demo/demo.log
+#logging:
+#  path: ./logs/spring_demo
+#  file: ./logs/spring_demo/demo.log
 #  config: classpath:logback.xml
 spring :
   datasource:
