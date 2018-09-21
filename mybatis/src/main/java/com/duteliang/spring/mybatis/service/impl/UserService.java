@@ -3,6 +3,8 @@ package com.duteliang.spring.mybatis.service.impl;
 import com.duteliang.spring.mybatis.mapper.TUserMapper;
 import com.duteliang.spring.mybatis.model.TUser;
 import com.duteliang.spring.mybatis.service.IUserService;
+import com.github.pagehelper.PageHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 @Service
 @Transactional
+@Slf4j
 public class UserService implements IUserService {
 
 	@Autowired
@@ -48,6 +51,9 @@ public class UserService implements IUserService {
 
 	@Override
 	public List<TUser> queryUserPage() {
-		return null;
+		PageHelper.startPage(1, 3, true);
+		List<TUser> tUsers = userMapper.queryAll(null);
+		log.info(tUsers.toString());
+		return tUsers;
 	}
 }

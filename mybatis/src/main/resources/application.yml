@@ -43,3 +43,6 @@ mybatis:
   mapper-locations: classpath:/com.duteliang.spring.mybatis.mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true   #自动将下划线转成驼峰规则
+# 分页插件
+pagehelper.help
+

@@ -24,3 +24,4 @@ springBoot 1.5.15 <br/>
 7. mybatis     对mybatis的基本使用(未开发) <br/>
    +  数据库连接池采用阿里的druid
    +  对日志logback的使用
+   +  使用分页插件和通用mapper插件 (官网入口:http://mybatis.tk/ )

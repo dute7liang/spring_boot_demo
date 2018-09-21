@@ -36,6 +36,12 @@
             <version>1.0.31</version>
         </dependency>
 
+        <!-- aop -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--com.duteliang.spring.mybatis.mapper-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -54,6 +60,8 @@
             <artifactId>mapper</artifactId>
             <version>3.4.3</version>
         </dependency>
+
+        <!--mybatis 缓存插件和生成插件-->
         <dependency>
             <groupId>org.mybatis.caches</groupId>
             <artifactId>mybatis-ehcache</artifactId>
