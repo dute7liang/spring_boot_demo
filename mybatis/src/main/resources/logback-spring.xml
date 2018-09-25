@@ -64,10 +64,19 @@
 	<logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
 	<logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
 
-	<!-- mybatis日志打印-->
-	<logger name="org.apache.ibatis" level="DEBUG" />
-	<logger name="java.sql" level="DEBUG" />
+	<!-- mybatis日志打印 -->
+	<logger name="org.apache.ibatis" level="INFO" />
+	<logger name="java.sql" level="INFO" />
 
+	<!-- druid 打印sql(测试发现 默认是DEBUG)  -->
+	<!--<logger name="druid.sql" level="INFO"/>
+	<logger name="druid.sql.DataSource" level="INFO"/>
+	<logger name="druid.sql.Connection" level="INFO"/>
+	<logger name="druid.sql.Statement" level="INFO"/>
+	<logger name="druid.sql.ResultSet" level="INFO"/>-->
+
+
+	<!--日志级别 DEBUG INFO WARN ERROR-->
 	<root>
 		<level value="DEBUG" />
 		<appender-ref ref="CONSOLE" />

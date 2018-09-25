@@ -21,7 +21,7 @@ springBoot 1.5.15 <br/>
    +  基本的登陆系统
 5. redis       对redis的基本使用(未开发) <br/>
 6. hibernate   对hibernate的基本使用(未开发) <br/>
-7. mybatis     对mybatis的基本使用(未开发) <br/>
+7. mybatis     对mybatis的基本使用 <br/>
    +  数据库连接池采用阿里的druid
    +  对日志logback的使用
    +  使用分页插件和通用mapper插件 (官网入口:http://mybatis.tk/ )
