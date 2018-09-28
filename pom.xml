@@ -16,6 +16,7 @@
         <module>mongodb</module>
         <module>mvc</module>
         <module>mybatis</module>
+        <module>apache_shiro</module>
     </modules>
 
     <parent>
