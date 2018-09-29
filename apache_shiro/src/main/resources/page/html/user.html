@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>home</title>
+    <script th:src="@{/js/test.js}"></script>
+    <script th:src="@{/js/jquery/jquery.min.js}"></script>
+    <link th:href="@{/css/test.css}" rel="stylesheet" />
+</head>
+<body>
+    <p> hello world!! 应该是红色字体</p>
+    hello world!!
+    <br/>
+    <span>当前用户:</span>
+    <span id="userName"></span>
+    <button onclick="loginOut()">登出</button>
+    <br/>
+    <br/>
+    <br/>
+    <a th:href="@{/swagger-ui.html}">进入接口测试页面</a> <br/>
+    <a th:href="@{/webSocketController/page}">进入webSocket测试页面</a> <br/>
+    <a th:href="@{/fileOperationController/page}">进入文件处理测试页面</a> <br/>
+</body>
+<script th:inline="javascript">
+    var contextPath = /*[[@{/}]]*/'';
+    $(function(){
+        console.log(contextPath);
+        $.ajax({
+            url : contextPath + "loginController/getCurrentUser",
+            type : "POST",
+            data : {},
+            success : function(data){
+                if(data){
+                    $("#userName").html(data.name)
+                }
+            }
+        })
+    })
+
+    function loginOut(){
+        $.ajax({
+            url : contextPath + "loginController/loginOut",
+            type : "POST",
+            data : {},
+            success : function(data){
+                if(data.success){
+                    window.location.href = contextPath + data.obj;
+                }
+            }
+        })
+    }
+</script>
+</html>

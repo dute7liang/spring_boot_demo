@@ -1,0 +1,93 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>文件处理TEST</title>
+    <script th:src="@{/js/jquery/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.form.js}"></script>
+    <style>
+        #files a {
+            cursor:pointer;
+            text-decoration : underline;
+            color: blue;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<span style="color: blue">单文件上传</span><br/>
+<form id="upload" th:action="@{/fileOperationController/upload}" method="POST" enctype="multipart/form-data">
+    <p>文件：<input type="file" name="file"/></p>
+    <p><input type="button" value="上传" onclick="upload()" /></p>
+</form>
+
+<span style="color: blue">多文件上传</span><br/>
+<form id="uploadMultiple" th:action="@{/fileOperationController/uploadMultiple}" method="POST" enctype="multipart/form-data" >
+    <p>文件1：<input type="file" name="file" /></p>
+    <p>文件2：<input type="file" name="file" /></p>
+    <p><input type="button" value="上传" onclick="uploadMultiple()" /></p>
+</form>
+<div id="files">
+
+
+</div>
+
+</body>
+<script th:inline="javascript">
+    var contextPath = /*[[@{/}]]*/'';
+
+    $(function(){
+        queryFiles();
+    })
+
+    function queryFiles(){
+        $.ajax({
+            url : contextPath + "fileOperationController/queryFile",
+            type : "POST",
+            data : {},
+            success : function(data){
+                if(data){
+                    $("#files").html("");
+                    /* <![CDATA[ */
+                    for (var i = 0; i < data.length; i++) {
+                        var fileName = data[i];
+                        var a = document.createElement('a');
+                        a.innerHTML = fileName;
+                        a.addEventListener('click', function() {
+                            download(fileName);
+                        });
+                        $("#files").get(0).appendChild(a);
+                    }
+                    /* ]]> */
+                }else{
+                    $("#files").html("");
+                }
+            }
+        });
+    }
+    function download(fileName){
+        console.log(fileName);
+        var url = contextPath + "fileOperationController/download?fileName="+encodeURIComponent(fileName);
+        window.open(url);
+    }
+    function upload(){
+        $("#upload").ajaxSubmit({
+            success :function(json){
+                queryFiles();
+                alert(json.msg);
+            }
+        });
+    }
+
+    function uploadMultiple(){
+        $("#uploadMultiple").ajaxSubmit({
+            success :function(json){
+                queryFiles();
+                alert(json.msg);
+            }
+        });
+    }
+
+</script>
+</html>
