@@ -17,4 +17,5 @@ public class IndexController extends BaseController {
 		return INDEX_PAGE;
 	}
 
+
 }

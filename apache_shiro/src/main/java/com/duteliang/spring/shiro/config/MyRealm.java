@@ -1,5 +1,7 @@
 package com.duteliang.spring.shiro.config;
 
+import com.duteliang.spring.shiro.model.UserSubject;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -54,11 +56,14 @@ public class MyRealm extends AuthorizingRealm {
 		// 从数据库获取对应用户名密码的用户
 //		String password = userMapper.getPassword(token.getUsername());
 		String password = token.getUsername();
-		if (null == password) {
-			throw new AccountException("用户名不正确");
+		if (StringUtils.isEmpty(password)) {
+			throw new AccountException("密码不正确");
 		} else if (!password.equals(new String((char[]) token.getCredentials()))) {
 			throw new AccountException("密码不正确");
 		}
-		return new SimpleAuthenticationInfo(token.getPrincipal(), password, getName());
+		UserSubject user = new UserSubject();
+		user.setUserName(token.getUsername());
+		user.setHost(token.getHost());
+		return new SimpleAuthenticationInfo(user, password, getName());
 	}
 }

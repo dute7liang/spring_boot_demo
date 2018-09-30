@@ -3,6 +3,7 @@ package com.duteliang.spring.shiro.model;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -14,9 +15,10 @@ import java.io.Serializable;
 @ToString
 public class User implements Serializable {
 
+	@Id
 	private String id;
 
-	private String name;
+	private String userName;
 
 	private String password;
 

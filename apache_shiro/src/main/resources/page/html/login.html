@@ -21,7 +21,7 @@
         var password = $("#password").val();
         console.log(contextPath);
         $.ajax({
-            url : contextPath + "loginController/login",
+            url : contextPath + "login",
             type : "post",
             data : {
                 userName : userName,
@@ -30,7 +30,7 @@
             success : function(data){
                 console.log(data);
                 if(data.success){
-                    window.location.href = contextPath + "userController/page"
+                    window.location.href = contextPath + "/"
                 }
             }
         })

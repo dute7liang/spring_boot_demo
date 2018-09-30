@@ -8,7 +8,9 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -19,16 +21,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Slf4j
 public class ShiroController extends BaseController {
 
+	private final static String LOGIN_PAGE = "html/login";
+
+	@GetMapping(value = "login_page")
+	public String loginPage(){
+		return LOGIN_PAGE;
+	}
 
 	/**
 	 * 登入
 	 */
 	@PostMapping(value = "login")
+	@ResponseBody
 	public Json login(User user, BindingResult bindingResult, RedirectAttributes redirectAttributes){
 		if(bindingResult.hasErrors()){
 			return new Json(false,"登入失败！");
 		}
-		String name = user.getName();
+		String name = user.getUserName();
 		UsernamePasswordToken token = new UsernamePasswordToken(name,user.getPassword());
 		Subject currentUser = SecurityUtils.getSubject();
 		Json json = new Json();
@@ -54,7 +63,7 @@ public class ShiroController extends BaseController {
 		} catch (AuthenticationException ae) {
 			//通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景
 			log.info("对用户[" + name + "]进行登录验证..验证未通过",ae);
-			redirectAttributes.addFlashAttribute("message", "用户名或密码不正确");
+			json.setMsg("用户名或密码不正确");
 		}
 		// 验证是否登录成功
 		if (currentUser.isAuthenticated()) {

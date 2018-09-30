@@ -19,6 +19,5 @@ public class ShiroApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext run = SpringApplication.run(ShiroApplication.class, args);
 		log.info("shiro Application 项目已启动！");
-
 	}
 }

@@ -27,11 +27,6 @@ public class UserController extends BaseController {
 	private IUserService userService;
 
 
-	/**
-	 *
-	 *
-	 *
-	 */
 	@RequestMapping(value = "page", method = RequestMethod.GET)
 	public String page(){
 		return PAGE;

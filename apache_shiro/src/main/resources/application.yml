@@ -46,7 +46,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true   # 自动将下划线转成驼峰规则
 
-# 分页插件W
+# 分页插件
 mapper:
   # 通用接口地址,必须配置，4.0以上版本可以不用配置，提供注解@RegisterMapper
   mappers:

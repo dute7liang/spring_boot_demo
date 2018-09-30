@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,7 +34,7 @@ public class ShiroConfig {
 	 */
 	@Bean
 	public SecurityManager securityManager(MyRealm myRealm){
-		DefaultSecurityManager securityManager = new DefaultSecurityManager();
+		DefaultSecurityManager securityManager = new DefaultWebSecurityManager();
 		securityManager.setRealm(myRealm);
 		return securityManager;
 	}
@@ -46,11 +47,11 @@ public class ShiroConfig {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-		// 设置登录 url
-		shiroFilterFactoryBean.setLoginUrl("/login");
+		// 设置登录 url(没有登陆就跳转到这个链接)
+		shiroFilterFactoryBean.setLoginUrl("/login_page");
 		// 设置登录成功url
-		shiroFilterFactoryBean.setSuccessUrl("/index");
-		// 设置无权限调整url
+		shiroFilterFactoryBean.setSuccessUrl("/");
+		// 设置无权限跳转url
 		shiroFilterFactoryBean.setUnauthorizedUrl("/go");
 
 		/**
@@ -64,8 +65,11 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/user/**", "roles[user]");
 		//管理员，需要角色权限 “admin”
 		filterChainDefinitionMap.put("/admin/**", "roles[admin]");
+
 		//开放登陆接口
 		filterChainDefinitionMap.put("/login", "anon");
+		filterChainDefinitionMap.put("/login_page", "anon");
+		filterChainDefinitionMap.put("/static/**", "anon");
 
 		//其余接口一律拦截
 		filterChainDefinitionMap.put("/**", "authc");
