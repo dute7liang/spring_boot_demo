@@ -1,6 +1,6 @@
 package com.duteliang.spring;
 
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2018-8-6 16:47
  */
 @SpringBootApplication
-@Log4j
+@Slf4j
 public class SpringCoreApplication {
 
 	public static void main(String[] args) {

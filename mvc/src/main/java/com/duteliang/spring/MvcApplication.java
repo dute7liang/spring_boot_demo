@@ -1,6 +1,6 @@
 package com.duteliang.spring;
 
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -14,7 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 //@EnableWebMvc
 @ServletComponentScan // 开启servlet注解，监听器和过滤器
-@Log4j
+@Slf4j
 public class MvcApplication {
 
 	public static void main(String[] args) {
