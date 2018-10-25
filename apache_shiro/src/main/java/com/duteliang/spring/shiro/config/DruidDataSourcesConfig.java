@@ -5,6 +5,7 @@ import com.duteliang.spring.shiro.properties.DruidDataSourceProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import java.sql.SQLException;
 @Slf4j
 @Component
 @SpringBootConfiguration
+@ConditionalOnProperty
 public class DruidDataSourcesConfig {
 	@Autowired
 	private DruidDataSourceProperties dataSourceProperties;

@@ -5,6 +5,7 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,13 +44,14 @@ public class ShiroConfig {
 	 * 配置拦截器
 	 */
 	@Bean
+	@ConditionalOnProperty
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-		// 设置登录 url(没有登陆就跳转到这个链接)
+		// 设置登录 url(没有登陆就跳转到这个链接) 由FormAuthenticationFilter 拦截器进行处理 authc
 		shiroFilterFactoryBean.setLoginUrl("/login_page");
-		// 设置登录成功url
+		// 设置登录成功url(不建议配置)
 		shiroFilterFactoryBean.setSuccessUrl("/");
 		// 设置无权限跳转url
 		shiroFilterFactoryBean.setUnauthorizedUrl("/go");
