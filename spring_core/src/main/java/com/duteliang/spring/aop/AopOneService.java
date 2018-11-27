@@ -1,5 +1,6 @@
 package com.duteliang.spring.aop;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,9 +11,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class AopOneService {
 
+	@Autowired
+	private AopTwoService aopTwoService;
 
 	public String add(String str) throws Exception{
 		System.out.println(this.getClass()+".add() 方法被执行！");
+		aopTwoService.add(str);
+		if("throw".equals(str)){
+			throw new RuntimeException();
+		}
 		return "this is test";
 	}
 

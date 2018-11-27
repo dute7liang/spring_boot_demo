@@ -26,10 +26,10 @@ public class AopTest {
 	 *  *Service   表示以Service结尾的class
 	 *  .*Add(..)  表示以Add结尾的方法名,括号里面表示任何入参
 	 */
-	@Pointcut("execution(public * com.duteliang.spring.aop..*Service.*add(..))")
+	@Pointcut("execution(public * com.duteliang.spring.aop..*OneService.*add(..))")
 	public void doService(){}
 
-	@Before("doService()")
+	/*@Before("doService()")
 	public void before(JoinPoint jp){
 		System.out.println("before 前置事件！");
 	}
@@ -46,30 +46,23 @@ public class AopTest {
 		System.out.println("方法的返回值 : " + obj);
 	}
 
-	/**
-	 * 有异常的时候进入
-	 * @param jp
-	 */
+
 	@AfterThrowing(throwing = "ex", pointcut = "doService()")
 	public void afterThrowing(JoinPoint jp,Exception ex){
 		System.out.println("方法异常时执行.....");
-	}
-
-
+	}*/
 
 	//环绕通知,环绕增强，相当于MethodInterceptor
 	//灵活性最强
 	@Around("doService()")
-	public Object arround(ProceedingJoinPoint pjp) {
+	public Object arround(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("方法环绕start.....");
 		try {
-			Object o =  pjp.proceed();
-			System.out.println("方法环绕proceed，结果是 :" + o);
-			return o + "222";
-		} catch (Throwable e) {
-			e.printStackTrace();
-			return null;
+			Object proceed = pjp.proceed();
+		}catch (Exception e){
+			System.out.println("方法报错了");
 		}
+		return null;
 	}
 
 

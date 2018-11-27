@@ -11,8 +11,12 @@ import org.springframework.stereotype.Component;
 public class AopTwoService {
 
 
-	public void add(){
+	public String add(String str){
 		System.out.println(this.getClass()+".add() 方法被执行！");
+		if("throw".equals(str)){
+			throw new RuntimeException();
+		}
+		return "this is test two";
 	}
 
 	public void delete(){
