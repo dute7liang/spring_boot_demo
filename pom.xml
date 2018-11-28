@@ -17,6 +17,7 @@
         <module>mvc</module>
         <module>mybatis</module>
         <module>apache_shiro</module>
+        <module>redis</module>
     </modules>
 
     <parent>

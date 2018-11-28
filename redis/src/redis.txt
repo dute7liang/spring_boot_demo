@@ -1,0 +1,70 @@
+
+
+1. redis的常用数据结构
+  String(字符串),list(链表),Set(无序集合),sorted set(有序集合),hash(Hash 表)
+
+2. redis版本（2.8）
+
+3. 命令
+
+3.1 基础命令
+databases 16 默认有16个数据库[0-15]
+select 1 选择1号数据库
+
+flushdb 清除当前database的所有数据
+flushall 清除所有database的所有数据
+
+dbsize  当前database的数量
+save    对redis进行持久化
+quit    退出命令
+
+3.2 键命令
+nx 结尾的命令，会加判断
+
+set [key] [value]   setnx加判断
+hset [key] [value] 设置hash的键值对
+
+get [key]
+rename [oldKey] [newKey]  重命令key，直接覆盖已存在的！可以使用renamenx加判断
+
+exists [key]    判断key是否存在
+ttl [key]       查看key的过期时间，单位秒，
+expire [key] [time,秒]  设置key值的过期时间
+type [key]      判断key的数据类型
+randomkey   随机获取一个key
+
+#命令结合
+setex [key] [time,秒] [value]
+psetex [key] [time,毫秒] [value]
+
+getset [key] [value]  设置新的值，同时返回已覆盖的value
+
+mset [key] [value] ... 设置多个值  +nx 有事务的性质
+mget [key] ...  获取多个值
+
+
+
+
+4. 数据结构说明
+    4.1 string 结构
+        getrange [key] [first] [end]  获取value的指定字符串
+        strlen [key]  获取字符串的长度
+        incr [key]  使值+1
+        incrby [key] [num] 使值+num
+        decr [key]  使值-1
+        decr [key] [num] 使值-num
+        append [key] [string] 追加一个字符串
+
+    4.2 sorted set 有序集合（相当于LinkedHashSet）（一般以z开头）
+        zadd [key] [obj:(key value key value)] 设置一个sortedSet的值
+        zcard [key] 查看有多少个元素
+        zscore  [key] [obj.key] 获取集合具体的某个value
+        zcount [key]
+        zrank  [key] [obj.key] 返回某个集合的排序
+        zincrby [key] [num] [obj.key] 值+num
+        zrange  [key] [first] [end] 根据排序拿元素，返回所有key
+        zrange  [key] [first] [end] withscores  根据排序拿元素，返回所有对象
+
+
+
+
