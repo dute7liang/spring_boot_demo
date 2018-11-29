@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,7 +19,7 @@ public class SpringSessionController {
 
 	@RequestMapping(value = "setSession")
 	@ResponseBody
-	public void setSession(HttpServletRequest request, HttpServletResponse response){
+	public void setSession(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		session.setAttribute("22222", "2222");
 		log.info("sessionId = {}",session.getId());
