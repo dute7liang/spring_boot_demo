@@ -82,10 +82,7 @@ getset [key] [value]  设置新的值，同时返回已覆盖的value
 
         spop   [key]  移除一个随机元素，同时返回回来
 
-
-
-
-    4.2 sorted set 有序集合（相当于LinkedHashSet）（一般以z开头）
+    4.5 sorted set 有序集合（相当于LinkedHashSet）（一般以z开头）
         zadd [key] [obj:(range value range value)] 设置一个sortedSet的值 range为分数值
         zcard [key] 查看有多少个元素
 
@@ -99,6 +96,21 @@ getset [key] [value]  设置新的值，同时返回已覆盖的value
 
         zrange  [key] [first] [end] 根据排序拿元素，返回所有key
         zrange  [key] [first] [end] withscores  根据排序拿元素，返回所有对象
+
+5. redis分布式
+    5.1 分布式算法原理
+        consistent hash 一致性hash算法
+            1. 先对数据hash 取值  key     这是固定的
+            2. 再对缓存hash 取值  cache   这是不固定的
+            3. 把hash的取模成环形
+            4. key可以直接存在顺时针最近的cache。这样每次取消or新增节点，影响的范围比较小（前提是hash分布均匀）
+
+            q: 由于hash的倾斜性，也就是hash分布不均匀
+                引入虚拟节点，对每个cache放大，随着虚拟节点的设置增多。会分布均匀
+
+
+
+
 
 
 

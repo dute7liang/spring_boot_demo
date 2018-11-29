@@ -1,0 +1,11 @@
+spring:
+  redis:
+    host: localhost
+    database: 0
+    pool:
+      max-active: 8
+      min-idle: 0   # 最小空闲实例个数
+      max-idle: 8   # 最多空闲实例个数
+      max-wait: -1  #
+  session:
+    store-type: redis
