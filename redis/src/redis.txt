@@ -21,13 +21,6 @@ quit    退出命令
 3.2 键命令
 nx 结尾的命令，会加判断
 
-set [key] [value]   setnx加判断
-hset [key] [value] 设置hash的键值对
-
-get [key]
-rename [oldKey] [newKey]  重命令key，直接覆盖已存在的！可以使用renamenx加判断
-
-exists [key]    判断key是否存在
 ttl [key]       查看key的过期时间，单位秒，
 expire [key] [time,秒]  设置key值的过期时间
 type [key]      判断key的数据类型
@@ -39,14 +32,11 @@ psetex [key] [time,毫秒] [value]
 
 getset [key] [value]  设置新的值，同时返回已覆盖的value
 
-mset [key] [value] ... 设置多个值  +nx 有事务的性质
-mget [key] ...  获取多个值
-
-
-
 
 4. 数据结构说明
     4.1 string 结构
+        set [key] [value]
+        get [key]
         getrange [key] [first] [end]  获取value的指定字符串
         strlen [key]  获取字符串的长度
         incr [key]  使值+1
@@ -54,14 +44,59 @@ mget [key] ...  获取多个值
         decr [key]  使值-1
         decr [key] [num] 使值-num
         append [key] [string] 追加一个字符串
+        rename [oldKey] [newKey]  重命令key，直接覆盖已存在的！可以使用renamenx加判断
+        exists [key]    判断key是否存在
+        mset [key] [value] ... 设置多个值  +nx 有事务的性质
+        mget [key] ...  获取多个值
+
+    4.2 hash结构  类似于HashMap
+        hset [key] [key value]
+        hget [key] [obj.key]
+        hexists [key] [obj.key]
+        hgetall [key]
+        hkeys [key]
+        hvals [key]
+        hlen  [key]
+        hdel  [key] [obj.key..]
+
+    4.3 list结构 允许重复值 类似于链表
+        lpush [key] [key...]   放在list的头部
+        rpush [key] [key...]   放在list的尾部
+        lpop  [key]   移除头部元素
+        rpop  [key]   移除尾部元素
+        lset  [key] [index] [value]  根据下标设置值
+        llen  [key]
+        lrange [first] [end]
+        lindex [key] [index]  根据下标获取值
+
+    4.4 set结构  无序集合 没有重复值
+        sadd [key] [key...]
+        scard [key]
+        srem    [key] [list.value..]  移除数量
+        smembers [key] 查看所有元素
+        sdiff [key1] [key2]  差值 key1 - key2
+        sinter [key1] [key2]  求交集
+        sunion [key1] [key2] 求并集
+        srandmember  [key] 2  返回key的 随机两个数据
+        sismember [key] [list.value] 判断是否为成员变量
+
+        spop   [key]  移除一个随机元素，同时返回回来
+
+
+
 
     4.2 sorted set 有序集合（相当于LinkedHashSet）（一般以z开头）
-        zadd [key] [obj:(key value key value)] 设置一个sortedSet的值
+        zadd [key] [obj:(range value range value)] 设置一个sortedSet的值 range为分数值
         zcard [key] 查看有多少个元素
-        zscore  [key] [obj.key] 获取集合具体的某个value
-        zcount [key]
-        zrank  [key] [obj.key] 返回某个集合的排序
+
+        zrem [key] [obj.key...]  移除元素
+
+
+        zcount [key] [0] [5]  获取分数值在0-5的成员数量
+        zscore  [key] [obj.key] 返回该元素的分数值
+        zrank  [key] [obj.key] 返回某个集合的索引（注意是索引不是分数值）
         zincrby [key] [num] [obj.key] 值+num
+
         zrange  [key] [first] [end] 根据排序拿元素，返回所有key
         zrange  [key] [first] [end] withscores  根据排序拿元素，返回所有对象
 
