@@ -1,7 +1,17 @@
 spring:
   redis:
-    host: localhost
-    database: 0
+    cluster:
+      nodes:
+        - 127.0.0.1:7000
+        - 127.0.0.1:7001
+        - 127.0.0.1:7002
+        - 127.0.0.1:7003
+        - 127.0.0.1:7004
+        - 127.0.0.1:7005
+      max-redirects: 3
+#    host: localhost
+#    password:
+#    database: 0
     pool:
       max-active: 8
       min-idle: 0   # 最小空闲实例个数

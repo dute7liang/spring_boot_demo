@@ -21,7 +21,14 @@ public class RedisServiceImplTest {
 
 	@Test
 	public void testRedisString() throws InterruptedException {
-		String test1;
+
+
+		for (int i = 0; i < 10; i++) {
+//			redisService.set(i+"",i+"");
+			log.info(redisService.get(i+""));
+		}
+
+		/*String test1;
 
 		redisService.set("test1", "test1");
 
@@ -36,12 +43,7 @@ public class RedisServiceImplTest {
 		Thread.sleep(6000);
 
 		test1 = redisService.get("test1");
-		log.info("6秒后test1的值为：{}",test1);
-
-
-
-
-
+		log.info("6秒后test1的值为：{}",test1);*/
 
 	}
 
