@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -25,6 +26,7 @@ public class DruidDataSourcesConfig {
 	
 	@Primary // 默认数据源
 	@Bean
+	@Scope
 	public DataSource dataSource() throws SQLException {
 		DruidDataSource dataSource = new DruidDataSource();
 		dataSource.setUrl(dataSourceProperties.getUrl());

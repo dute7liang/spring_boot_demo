@@ -1,7 +1,8 @@
 spring:
   data:
     mongodb:
-      uri : mongodb://scxxtool:1@192.168.37.129:27017,192.168.37.129:27018,192.168.37.129:27019/scxxtool
+#      uri : mongodb://scxxtool:1@192.168.37.129:27017,192.168.37.129:27018,192.168.37.129:27019/scxxtool
+      uri : mongodb://pldTask:pldTask@192.168.72.50/paladin_task_log
       option:
         min-connection-per-host: 0
         max-connection-per-host: 100

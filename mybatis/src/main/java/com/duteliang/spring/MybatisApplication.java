@@ -23,6 +23,6 @@ public class MybatisApplication {
 		log.error("error");
 		log.warn("warn");
 		log.info("info");
-		log.debug("debug");
+		log.debug("debug大大大大大大爱上达成吧v");
 	}
 }
