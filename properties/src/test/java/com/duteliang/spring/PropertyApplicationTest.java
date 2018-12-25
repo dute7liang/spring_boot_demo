@@ -1,9 +1,6 @@
 package com.duteliang.spring;
 
-import com.duteliang.spring.property.AutoProperties;
-import com.duteliang.spring.property.DefaultAutoProperties;
-import com.duteliang.spring.property.DefaultProperties;
-import com.duteliang.spring.property.SourceProperties;
+import com.duteliang.spring.property.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +38,14 @@ public class PropertyApplicationTest {
 
 	@Autowired
 	private DefaultAutoProperties defaultAutoProperties;
+
+	@Autowired
+	private AutoYml autoYml;
+
+	@Test
+	public void autoYml(){
+		log.info(autoYml.toString());
+	}
 
 	@Test
 	public void defaultAutoPropertiesTest(){

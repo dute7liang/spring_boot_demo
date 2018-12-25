@@ -1,3 +1,17 @@
 com:
-  app-name: properties
-  name: property
+  yml:
+    test:
+      a-double: 5.5
+#      date: 2018-08-08
+      integer: 5
+      boo: true
+      list1: 5,3,sdak,333
+      list2:
+        - namedajkdla
+        - fhajhahhdoica
+        - 222222222222
+      map:
+        name: dhajkdhkja
+        age: 2
+        date: 2018-07-08
+      string: dagdgakj
