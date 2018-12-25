@@ -34,8 +34,8 @@ public class HelloJob2 implements Job {
 	public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 		Date date = new Date();
 		String format = DateFormatUtils.format(date, "yyyy-MM-dd HH:mm:ss");
-		System.out.println("hello job :" + format);
-		Random random = new Random();
+		System.out.println("helloJob2 :" + format);
+		/*Random random = new Random();
 
 
 		JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
@@ -50,23 +50,23 @@ public class HelloJob2 implements Job {
 
 		triggerMap.put("key", random.nextInt(10)+" trigger");
 
-		/**
+		*//**
 		 * merge 优先获取 trigger 里面的参数
-		 */
+		 *//*
 		JobDataMap mergedJobDataMap = jobExecutionContext.getMergedJobDataMap();
 		String key1 = mergedJobDataMap.getString("key");
 		System.out.println("merge map key = " + key1);
 
-		/**
+		*//**
 		 * getSet 自动获取参数
-		 */
+		 *//*
 		System.out.println("getSet自动获取 key:"+this.key);
 		System.out.println("getSet自动获取 age:"+this.age);
-		System.out.println("getSet自动获取 price:"+this.price);
+		System.out.println("getSet自动获取 price:"+this.price);*/
 
 
 		try {
-			Thread.sleep(6000);
+			Thread.sleep(8000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
