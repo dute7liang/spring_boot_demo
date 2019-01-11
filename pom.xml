@@ -19,6 +19,7 @@
         <module>apache_shiro</module>
         <module>redis</module>
         <module>quartz</module>
+        <module>test</module>
     </modules>
 
     <parent>

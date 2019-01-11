@@ -4,8 +4,6 @@ import com.duteliang.spring.mvc.constanst.Constants;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,12 +14,12 @@ import java.io.IOException;
  * @Auther: zl
  * @Date: 2018-8-29 11:26
  */
-@WebFilter(filterName = "loginFilter",
-		urlPatterns = "/*",
-		initParams = {
-			@WebInitParam(name = "exclusions-static", value = ".css,.js,.html,.png,ui"),
-			@WebInitParam(name = "exclusions-url", value = Constants.LOGIN_URL + ",/loginController/login")
-		})
+//@WebFilter(filterName = "loginFilter",
+//		urlPatterns = "/*",
+//		initParams = {
+//			@WebInitParam(name = "exclusions-static", value = ".css,.js,.html,.png,ui"),
+//			@WebInitParam(name = "exclusions-url", value = Constants.LOGIN_URL + ",/loginController/login")
+//		})
 @Slf4j
 public class CLoginFilter  implements Filter {
 

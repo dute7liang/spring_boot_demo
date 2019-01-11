@@ -4,6 +4,8 @@ import com.duteliang.spring.mvc.constanst.Constants;
 import com.duteliang.spring.mvc.model.TUser;
 import com.duteliang.spring.mvc.service.IUserService;
 import com.duteliang.spring.mvc.vo.Json;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping(value = "loginController")
 @Slf4j
+@Api
 public class LoginController extends BaseController {
 
 	private final static String PAGE = "html/login";
@@ -37,6 +40,7 @@ public class LoginController extends BaseController {
 
 	@PostMapping(value = "login")
 	@ResponseBody
+	@ApiOperation("login")
 	public Json login(String userName, String password, HttpServletRequest request){
 		Json json = new Json();
 		try {
