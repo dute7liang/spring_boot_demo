@@ -1,4 +1,4 @@
-package com.duteliang.spring.aop.one;
+package com.duteliang.spring.aop.one.two;
 
 import org.springframework.stereotype.Component;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2019-7-17 09:52
  */
 @Component
-public class ChildOneService {
+public class TwoOneService {
 
 	public String add(String str) throws Exception{
 		System.out.println(this.getClass()+".add() 方法被执行！");

@@ -50,7 +50,7 @@ getset [key] [value]  设置新的值，同时返回已覆盖的value
         mget [key] ...  获取多个值
 
     4.2 hash结构  类似于HashMap
-        hset [key] [key value]
+        hset [key] [value]
         hget [key] [obj.key]
         hexists [key] [obj.key]
         hgetall [key]

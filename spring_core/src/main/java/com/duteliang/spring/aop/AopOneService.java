@@ -16,7 +16,7 @@ public class AopOneService {
 
 	public String add(String str) throws Exception{
 		System.out.println(this.getClass()+".add() 方法被执行！");
-		aopTwoService.add(str);
+//		aopTwoService.add(str);
 		if("throw".equals(str)){
 			throw new RuntimeException();
 		}

@@ -1,8 +1,9 @@
 package com.duteliang.spring.aop;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,12 +22,12 @@ public class AopTest {
 	 * 拆解说明：
 	 *  public 表示 修饰符public，可省略
 	 *  *  任何返回类型
-	 *  com.duteliang.spring.aop  表示指定包名
+	 *  com.duteliang.spring.aop  表示指定包名,会扫描该包名下的类和所有子类
 	 *  ..  用于分割 包名和类名
 	 *  *Service   表示以Service结尾的class
 	 *  .*Add(..)  表示以Add结尾的方法名,括号里面表示任何入参
 	 */
-	@Pointcut("execution(public * com.duteliang.spring.aop..*OneService.*add(..))")
+	@Pointcut("execution(public * com.*.*.aop..*OneService.*add(..))")
 	public void doService(){}
 
 	/*@Before("doService()")

@@ -1,11 +1,11 @@
 package com.duteliang.redis.service;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author: zl 常用方法
@@ -22,6 +22,10 @@ public class RedisServiceImpl {
 
 
 	public void set(String key,String value){
+
+//		redisTemplate.watch(key);
+//		redisTemplate.exec();
+
 		redisTemplate.opsForValue().set(key, value);
 	}
 

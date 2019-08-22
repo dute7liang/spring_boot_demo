@@ -1,6 +1,16 @@
 package com.duteliang.sjdbc.config;
 
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
 import com.alibaba.druid.pool.DruidDataSource;
+
 import io.shardingsphere.api.config.rule.MasterSlaveRuleConfiguration;
 import io.shardingsphere.shardingjdbc.api.MasterSlaveDataSourceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +18,6 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-
-import javax.sql.DataSource;
-import java.sql.SQLException;
-import java.util.*;
 
 /**
  * 主从读写分离技术
@@ -33,7 +39,7 @@ public class MasterSlaveConfig {
 		Properties properties = new Properties();
 		properties.setProperty("sql.show", "true");
 		return MasterSlaveDataSourceFactory.createDataSource(createDataSourceMap(), masterSlaveRuleConfig,
-				new LinkedHashMap<String, Object>(), new Properties());
+				new LinkedHashMap<String, Object>(), properties);
 	}
 
 	private Map<String, DataSource> createDataSourceMap() {

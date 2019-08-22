@@ -21,6 +21,7 @@
         <module>quartz</module>
         <module>test</module>
         <module>sharding-sphere</module>
+        <module>java</module>
     </modules>
 
     <parent>

@@ -2,7 +2,6 @@ package com.duteliang.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2018-11-27 19:38
  */
 @Component
-@Aspect
+//@Aspect
 public class AopTwoTest {
 
 	@Pointcut("execution(public * com.duteliang.spring.aop..*TwoService.*add(..))")
