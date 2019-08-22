@@ -2,8 +2,11 @@ package com.duteliang.spring;
 
 import com.duteliang.spring.aop.AopOneService;
 import com.duteliang.spring.aop.AopTwoService;
+import com.duteliang.spring.aop.one.ChildOneService;
+import com.duteliang.spring.aop.one.two.TwoOneService;
 import com.duteliang.spring.ioc.BeanService;
 import com.duteliang.spring.ioc.ComponentBean;
+
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,6 +56,24 @@ public class SpringCoreApplicationTest {
 			e.printStackTrace();
 		}
 //		aopOneService.delete();
+	}
+
+	@Autowired
+	private ChildOneService childOneService;
+
+	@Autowired
+	private TwoOneService twoOneService;
+
+	@Test
+	public void aopTest2(){
+		try {
+			String add = twoOneService.add("5050");
+			System.out.println(add);
+			String aThrow = childOneService.add("5050");
+			System.out.println(aThrow);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
