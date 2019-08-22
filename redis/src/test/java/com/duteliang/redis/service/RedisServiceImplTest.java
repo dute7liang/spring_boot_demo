@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -18,6 +19,19 @@ public class RedisServiceImplTest {
 
 	@Autowired
 	private RedisServiceImpl redisService;
+
+	@Autowired
+	private RedisTemplate<String,String> redisTemplate;
+
+//	@Autowired
+//	private RedisTemplate<String,Object> redisTemplates;
+
+	@Test
+	public void testRedisHash() {
+//		redisTemplate.opsForHash().put("person", "name", "张三");
+		redisTemplate.opsForHash().put("person", "age", "55");
+
+	}
 
 	@Test
 	public void testRedisString() throws InterruptedException {
